@@ -8,6 +8,7 @@ const ELEMENT_SELECTORS = {
     checkboxClass: '.ckGgle',
     languageAgnosticDeleteButton: 'div[data-delete-origin] button',
     deleteButton: 'button[aria-label="Delete"]',
+    restoreButton: 'button[aria-label="Restore"]'
     confirmationButton: '#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.V639qd.bvQPzd.oEOLpc.Up8vH.J9Nfi.A9Uzve.iWO5td > div.XfpsVe.J9fJmf > button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.nCP5yc.kHssdc.HvOprf'
 }
 
@@ -24,10 +25,11 @@ let imageCount = 0;
 let checkboxes;
 let buttons = {
     deleteButton: null,
+    restoreButton: null,
     confirmationButton: null
 }
 
-let deleteTask = setInterval(async () => {
+let restoreTask = setInterval(async () => {
     let attemptCount = 1;
 
     do {
@@ -38,7 +40,7 @@ let deleteTask = setInterval(async () => {
 
     if (checkboxes.length <= 0) {
         console.log("[INFO] No more images to delete.");
-        clearInterval(deleteTask);
+        clearInterval(restoreTask);
         console.log("[SUCCESS] Tool exited.");
         return;
     }
@@ -51,11 +53,11 @@ let deleteTask = setInterval(async () => {
 
     setTimeout(() => {
         try {
-            buttons.deleteButton = document.querySelector(ELEMENT_SELECTORS['languageAgnosticDeleteButton']);
-            buttons.deleteButton.click();
+            buttons.restoreButton = document.querySelector(ELEMENT_SELECTORS['languageAgnosticRestoreButton']);
+            buttons.restoreButton.click();
         } catch {
-            buttons.deleteButton = document.querySelector(ELEMENT_SELECTORS['deleteButton']);
-            buttons.deleteButton.click();
+            buttons.restoreButton = document.querySelector(ELEMENT_SELECTORS['restoreButton']);
+            buttons.restoreButton.click();
         }
 
         setTimeout(() => {
@@ -65,7 +67,7 @@ let deleteTask = setInterval(async () => {
             console.log(`[INFO] ${imageCount}/${maxImageCount} Deleted`);
             if (maxImageCount !== "ALL_PHOTOS" && imageCount >= parseInt(maxImageCount)) {
                 console.log(`${imageCount} photos deleted as requested`);
-                clearInterval(deleteTask);
+                clearInterval(restoreTask);
                 console.log("[SUCCESS] Tool exited.");
                 return;
             }
