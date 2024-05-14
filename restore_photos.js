@@ -8,13 +8,13 @@ const ELEMENT_SELECTORS = {
     checkboxClass: '.ckGgle',
     languageAgnosticDeleteButton: 'div[data-delete-origin] button',
     deleteButton: 'button[aria-label="Delete"]',
-    restoreButton: 'button[aria-label="Restore"]'
-    confirmationButton: '#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.V639qd.bvQPzd.oEOLpc.Up8vH.J9Nfi.A9Uzve.iWO5td > div.XfpsVe.J9fJmf > button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.nCP5yc.kHssdc.HvOprf'
+    restoreButton: 'button[aria-label="Restore"]',
+    confirmationButton: '#yDmH0d > div:nth-child(13) > div.VfPpkd-wzTsW.O4g5Md.iWO5td > div > div > div > div.VfPpkd-T0kwCb.IdSMxc > button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.nCP5yc.AjY5Oe.LQeN7.kDryjd'
 }
 
 // Time Configuration (in milliseconds)
 const TIME_CONFIG = {
-    delete_cycle: 10000,
+    delete_cycle: 20000,
     press_button_delay: 2000
 };
 
